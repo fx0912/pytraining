@@ -1,0 +1,43 @@
+## Installing libraries is a one time activity
+
+## Installing OpenCV (Open source computer vision library) to do image processing
+## Installing pandas for data visualization 
+## Added matplotlib installation which is needed for plotting
+!pip install opencv-python
+!pip install pandas
+!pip install matplotlib 
+
+#------------------------------------------------------------------------------------------------------------------
+
+## Import OpenCV library
+import cv2
+# get source image
+img = cv2.imread("C:/Users/franc/Downloads/2020-devil-may-cry-4k-w6.jpg")
+
+#------------------------------------------------------------------------------------------------------------------
+
+## Check condition for image (not really required as I have selected the image from my local which is already present)
+if img is None:
+    # if no image selected return error message
+    print("Error: Could not load image")
+else:
+    # process to gray scale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # check for color codes here https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html
+    # Save the grayscale image
+    cv2.imwrite("gray.jpg", gray) 
+    # message to indiate the completion status
+    print("Image processed successfully")
+    
+#------------------------------------------------------------------------------------------------------------------
+
+print(gray)
+## return image in array (Optional)
+
+## Import matplotlib library instead of pandas for visualization
+import matplotlib.pyplot as plt  # Changed from pandas to matplotlib
+# Return the processed (Grayed) image
+plt.imshow(gray, cmap='gray')  
+# Use cmap='gray' for grayscale images
+plt.axis('off') #By default it will display image with axis opt to trun off by hiding the axis
+plt.show() 
